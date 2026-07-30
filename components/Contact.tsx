@@ -31,7 +31,7 @@ export default function Contact() {
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button variant="solid" href="https://wa.me/1234567890" className="min-w-[14rem]">
+            <Button variant="solid" href="https://wa.me/07501755179" className="min-w-[14rem]">
               WhatsApp
             </Button>
             <Button variant="outline" href="mailto:hello@vexora.com" className="min-w-[14rem]">
