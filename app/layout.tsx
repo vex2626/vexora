@@ -18,6 +18,25 @@ export const metadata: Metadata = {
   title: "Vexora — Premium Software Studio",
   description:
     "Vexora builds premium software, digital systems, and practical technology education for modern businesses.",
+  openGraph: {
+    title: "Vexora — Premium Software Studio",
+    description:
+      "Vexora builds premium software, digital systems, and practical technology education for modern businesses.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vexora — Premium Software Studio",
+    description:
+      "Vexora builds premium software, digital systems, and practical technology education for modern businesses.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
