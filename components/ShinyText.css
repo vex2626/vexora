@@ -1,0 +1,29 @@
+﻿.shiny-text {
+  display: inline-block;
+  position: relative;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  /* Inherit sizing from parent so it fits buttons and headings naturally */
+  font-size: inherit;
+  line-height: inherit;
+  max-width: 100%;
+  /* Allow wrapping on small screens instead of forcing a single line */
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Make small adjustments for very small viewports */
+@media (max-width: 420px) {
+  .shiny-text {
+    font-size: 0.95em;
+  }
+}
+
+/* Slightly scale up on large screens if parent allows it */
+@media (min-width: 1280px) {
+  .shiny-text {
+    font-size: 1em;
+  }
+}

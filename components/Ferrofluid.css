@@ -1,0 +1,24 @@
+.ferrofluid-container {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.ferrofluid-container canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ferrofluid-container {
+    opacity: 0.96;
+  }
+}
+
+/* Fallback styling when WebGL is not available */
+.ferrofluid-container.ff--fallback {
+  background: linear-gradient(180deg, rgba(124,58,237,0.06), rgba(6,182,212,0.03));
+  min-height: 320px; /* keep a visible area */
+}

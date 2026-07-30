@@ -1,0 +1,42 @@
+:root{
+  --magic-bg: rgba(12,10,14,0.6);
+  --glow-default: 132,0,255;
+}
+
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media (max-width:1024px){.card-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.card-grid{grid-template-columns:1fr}}
+
+.magic-bento-card{height:420px;border-radius:18px;position:relative;overflow:hidden;padding:22px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);box-shadow:0 20px 60px rgba(0,0,0,0.6);backdrop-filter: blur(8px) saturate(120%);transition:transform .45s cubic-bezier(.2,.9,.2,1),box-shadow .45s ease}
+.magic-bento-card--border-glow{box-shadow:0 24px 80px rgba(0,0,0,0.6),0 0 40px rgba(124,58,237,0.02)}
+.magic-bento-card:hover{transform:translateY(-8px);border-color:rgba(191,18,238,0.26);box-shadow:0 36px 110px rgba(0,0,0,0.65),0 0 120px rgba(124,58,237,0.06)}
+
+.magic-bento-card__header{display:flex;justify-content:space-between;align-items:center}
+.magic-bento-card__label{font-size:0.72rem;color:rgba(200,180,255,0.9);letter-spacing:0.14em;text-transform:uppercase}
+
+.magic-bento-card__content{display:flex;flex-direction:column;justify-content:center;height:calc(100% - 56px)}
+.magic-bento-card__title{font-size:1.45rem;margin:6px 0;color:#fff}
+.magic-bento-card__description{font-size:0.98rem;color:rgba(244,247,251,0.78);max-width:320px}
+
+/* particle elements */
+.particle{position:absolute;width:4px;height:4px;border-radius:50%;background:rgba(var(--glow-color, 132,0,255),1);box-shadow:0 0 6px rgba(var(--glow-color,132,0,255),0.6);pointer-events:none}
+
+/* global spotlight */
+.global-spotlight{pointer-events:none;mix-blend-mode:screen}
+
+/* bento grid wrapper used by Services */
+.bento-section{padding-top:8px;padding-bottom:8px}
+
+/* small responsive adjustments */
+@media (prefers-reduced-motion: reduce){.magic-bento-card,.magic-bento-card *{transition:none!important}}
+
+/* hide auto text if requested */
+.magic-bento-card--text-autohide .magic-bento-card__description{opacity:1;transition:opacity .3s ease}
+@media (max-width:640px){.magic-bento-card--text-autohide .magic-bento-card__description{opacity:1}}
+
+/* subtle node glows via CSS variables set by spotlight */
+.magic-bento-card{--glow-x:50%;--glow-y:50%;--glow-intensity:0;--glow-radius:300px}
+.magic-bento-card::before{content:'';position:absolute;left:var(--glow-x);top:var(--glow-y);transform:translate(-50%,-50%);width:var(--glow-radius);height:var(--glow-radius);background:radial-gradient(circle at center, rgba(var(--glow-color,132,0,255),calc(var(--glow-intensity) * 0.22)), transparent 40%);pointer-events:none;filter:blur(30px);opacity:var(--glow-intensity);transition:opacity .25s ease, transform .25s ease}
+
+/* ensure baseline accessibility */
+.magic-bento-card .magic-bento-card__title{line-height:1.05}

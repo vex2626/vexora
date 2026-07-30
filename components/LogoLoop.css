@@ -1,0 +1,10 @@
+.logoloop{position:relative;overflow:hidden;display:block}
+.logoloop__track{display:flex;align-items:center;width:100%;}
+.logoloop--horizontal .logoloop__list{display:flex;flex-direction:row;gap:var(--logoloop-gap,32px);align-items:center;padding:0;margin:0;list-style:none}
+.logoloop__item{display:flex;align-items:center;justify-content:center}
+.logoloop__item img{height:var(--logoloop-logoHeight,28px);width:auto;display:block;opacity:0.95}
+.logoloop__node{display:inline-flex;align-items:center;justify-content:center}
+.logoloop--fade:after{content:"";position:absolute;right:0;top:0;bottom:0;width:120px;pointer-events:none;background:linear-gradient(90deg,rgba(5,5,5,0),rgba(5,5,5,1))}
+.logoloop--scale-hover .logoloop__item{transition:transform 220ms cubic-bezier(.2,.9,.2,1)}
+.logoloop--scale-hover .logoloop__item:hover{transform:scale(1.06)}
+.logoloop--horizontal{white-space:nowrap}

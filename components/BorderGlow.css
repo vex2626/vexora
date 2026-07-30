@@ -1,0 +1,74 @@
+:root{
+  --card-bg: #120F17;
+  --border-radius: 20px;
+  --glow-padding: 36px;
+  --edge-proximity: 50;
+  --cursor-angle: 120deg;
+  --fill-opacity: 0.5;
+}
+
+.border-glow-card{
+  position:relative;
+  display:block;
+  padding:var(--glow-padding);
+  border-radius:var(--border-radius);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* layered gradient / glow behind the inner surface */
+.border-glow-card .edge-light{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius:calc(var(--border-radius));
+  mix-blend-mode:screen;
+  opacity:calc(var(--fill-opacity));
+  background-image: var(--gradient-one), var(--gradient-two), var(--gradient-three), var(--gradient-four), var(--gradient-five), var(--gradient-six), var(--gradient-seven);
+  filter: blur(28px) saturate(140%);
+  transform-origin:center center;
+  transition:opacity .35s ease, transform .6s cubic-bezier(.2,.9,.2,1);
+}
+
+/* subtle directional cone using CSS mask + angle */
+.border-glow-card .edge-light::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background: conic-gradient(from var(--cursor-angle), rgba(255,255,255,0.06), transparent 40%);
+  mix-blend-mode:overlay;
+  opacity: calc(var(--edge-proximity) / 110);
+  filter: blur(20px);
+}
+
+.border-glow-inner{
+  position:relative;
+  border-radius:calc(var(--border-radius) - 8px);
+  background: var(--card-bg);
+  overflow:hidden;
+}
+
+/* small inner mask to reduce the glow overlap */
+.border-glow-inner::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), inset 0 -18px 60px rgba(0,0,0,0.6);
+}
+
+/* sweep active state (for the animated variant) */
+.border-glow-card.sweep-active .edge-light{ transform: translateY(-8px) scale(1.02); }
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .border-glow-card .edge-light, .border-glow-card .edge-light::after{ transition:none; animation:none }
+}
+
+/* helper: allow consumers to size the inner area (common case) */
+.border-glow-card > .border-glow-inner > *{position:relative}
+
+/* small tweaks to keep content from touching the inner edges */
+.border-glow-card .border-glow-inner{padding:10px}
+
